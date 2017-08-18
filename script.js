@@ -39,18 +39,20 @@ function GetData(startDate, endDate) {
 function AnalyzeData(repos) {
     var statistics = [];
     for (var i = 0; i < repos.length; i++) {
-        if (repos[i].language != null) {
-            var index = statistics.findIndex(s => s.language == repos[i].language);
-            if (index == -1) {
-                var item = { language: repos[i].language, totalRepos: 1, AvgForks: repos[i].forks, AvgStars: repos[i].stargazers_count };
-                statistics.push(item);
-            }
-            else {
-                statistics[index].totalRepos++;
-                statistics[index].AvgForks += repos[i].forks;
-                statistics[index].AvgStars += repos[i].stargazers_count;
-            }
+        if (repos[i].language == null)
+            repos[i].language = "Unspecified";
+
+        var index = statistics.findIndex(s => s.language == repos[i].language);
+        if (index == -1) {
+            var item = { language: repos[i].language, totalRepos: 1, AvgForks: repos[i].forks, AvgStars: repos[i].stargazers_count };
+            statistics.push(item);
         }
+        else {
+            statistics[index].totalRepos++;
+            statistics[index].AvgForks += repos[i].forks;
+            statistics[index].AvgStars += repos[i].stargazers_count;
+        }
+
     }
     //Get the Averages
     for (var i = 0; i < statistics.length; i++) {
@@ -68,7 +70,7 @@ function RenderData(statistics) {
     }
 
     //Render the new records
-    for (var i=0; i <statistics.length; i++){
+    for (var i = 0; i < statistics.length; i++) {
         var tr = document.createElement('tr');
 
         var td = document.createElement('td');
