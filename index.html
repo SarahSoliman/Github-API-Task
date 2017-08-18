@@ -1,0 +1,43 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="./gh3-1.0.3/vendors/jquery-2.1.0.min.js"></script>
+    <script src="./gh3-1.0.3/vendors/underscore-min.js"></script>
+    <script src="./gh3-1.0.3/gh3.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <label for="male">Start Date:</label>
+    <input type="text" id="input_startDate" placeholder="YYYY-MM-DD">
+    <label for="male">End Date:</label>
+    <input id="input_endDate" placeholder="YYYY-MM-DD">
+    </br>
+    </br>
+    <button type="button" onclick="Go()">Go</button>
+    </br>
+    </br>
+    <button type="button" onclick="GetDefault()">Get Default</button>
+    <h3 id="error"></h3>
+    <h2 id="table_title"></h2>
+    </br>
+    <table>
+        <thead>
+            <tr>
+                <th>Lanuage</th>
+                <th>Total Repos</th>
+                <th>Avg Forks</th>
+                <th>Avg Stars</th>
+            </tr>
+        </thead>
+        <tbody id="table_body">
+
+        </tbody>
+    </table>
+
+
+</body>
+
+</html>

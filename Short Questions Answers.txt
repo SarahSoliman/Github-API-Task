@@ -1,0 +1,26 @@
+1) Is your code testable? If so, which functions should be tested and what test cases
+should we include? If not, is there a way to make it testable?
+--------------------------------------------------------------------------------------------------------------------------------
+Most of it is testable. Functions to be tested are:
+- GetData(startDate, endDate)
+- AnalyzeData(data)
+	Test cases will be calling the function with arrays of repository records and the expected result is an array with
+	the calculated statistics.
+- RenderData(statistics)
+	Test cases will be calling the function with different arrays of the table structure and the expected results is
+	rendering filling the table with the array's content.
+********************************************************************************************************************************
+2) Suppose you are asked to allow users of the app to specify the date range for the
+analysis (i.e. rather than repos created in the last 90 days, the user is free to select any
+arbitrary date range). How would you implement this?
+--------------------------------------------------------------------------------------------------------------------------------
+I included this part in the code in the code.
+********************************************************************************************************************************
+3) Suppose you are asked to do the same for the number of repos to consider (i.e. rather
+than the top 100, the user is free to select any multiple of 100). Is this different? What
+special considerations are there?
+--------------------------------------------------------------------------------------------------------------------------------
+Yes, it is slightly different because Github API allows a maximum of 100 records per a get request.
+This means that in order to get x multiples of 100 records, x requests should be done. 
+So the required modification will be looping over the code that requests the 100 records and concatenate the results.
+********************************************************************************************************************************
